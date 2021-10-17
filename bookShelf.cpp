@@ -6,6 +6,6 @@ BookShelf::BookShelf(int id, string title){
     this->title = title;
 }
 
-void BookShelf::addBook(BookItem * item){
-    this->bookItem.push_back(item);
+void BookShelf::addBook(Book * item){
+    this->book.push_back(item);
 }

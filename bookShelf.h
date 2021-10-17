@@ -2,18 +2,18 @@
 #define BOOKSHELF_H
 
 #include "header.h"
-#include "bookItem.h"
+#include "book.h"
 
 class BookShelf {
     public:
     int id;
     string title;
-    vector <BookItem*> bookItem;
+    vector <Book*> book;
     
     BookShelf();
     BookShelf(int id, string title);
 
-    void addBook(BookItem *item);
+    void addBook(Book *item);
 };
 
 #endif

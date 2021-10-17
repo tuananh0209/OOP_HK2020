@@ -10,9 +10,9 @@ public:
     string phone;
     string address;
     string birthday;
-
+    string username;
     Person();
-    Person(string name, string phone, string address, string birthday);
+    Person(string username, string name, string phone, string address, string birthday);
 };
 
 #endif

@@ -11,7 +11,7 @@ class Member: public Person {
     vector <BookItem*> borrowing;
 
     Member();
-    Member(int id, string name, string phone, string address, string birthday);
+    Member(int id,string username, string name, string phone, string address, string birthday);
 
 };
 

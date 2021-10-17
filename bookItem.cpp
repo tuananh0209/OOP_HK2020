@@ -2,8 +2,7 @@
 
 BookItem::BookItem(){};
 
-BookItem::BookItem(int code, Book *book)
+BookItem::BookItem(int code)
 {
     this->code = code;
-    this->book = book;
 }

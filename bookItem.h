@@ -10,13 +10,12 @@ class BookItem
 public:
     int code;
     bool borrowed;
-    Book *book;
     string loanPeriod;
     string dueDay;
     bool isOverdue;
 
     BookItem();
-    BookItem(int code, Book *book);
+    BookItem(int code);
 };
 
 #endif

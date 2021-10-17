@@ -10,7 +10,7 @@ class Librarian: public Person{
     int id;
 
     Librarian();
-    Librarian(int id, string name, string phone, string address, string birthday);
+    Librarian(int id,string username, string name, string phone, string address, string birthday);
 };
 
 #endif
