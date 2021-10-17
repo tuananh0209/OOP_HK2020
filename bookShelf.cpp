@@ -54,3 +54,12 @@ vector<Book *> BookShelf::search(string key)
     }
     return result;
 }
+
+vector<Book *> BookShelf::getBook(){
+    vector<Book *> result;
+    int len = this->book.size();
+    for (int i = 0; i < len; i++){
+        result.push_back(this->book[i]);
+    }
+    return result;
+}

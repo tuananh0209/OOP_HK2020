@@ -15,6 +15,7 @@ class BookShelf {
 
     void addBook(Book *item);
     vector<Book *> search(string key);
+    vector<Book *> getBook();
 };
 
 #endif

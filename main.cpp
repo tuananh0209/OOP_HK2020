@@ -68,11 +68,51 @@ int main(){
         switch (chose)
         {
         case 1:
+            {
+                int logout_flag = 0;
+                while (1)
+                {
+                    string username;
+                    cout << "Enter your username:\n";
+                    username = getString();
+                    if (!libary.librarianLogin(username))
+                    {
+                        cout << "Wrong username!\n";
+                    }
+                    else
+                    {
+                        cout << "Login success!\n";
+                        Sleep(500);
+                        break;
+                    }
+                }
+                while (logout_flag == 0)
+                {
+                    cout << "=====================================================\n";
+                    cout << "====================== " << libary.libraLogin->name << " ====================\n";
 
+                    cout << "1. list book\n";
+                    cout << "2. logout\n";
+                    cin >> chose;
+                    switch (chose){
+                        case 1:
+                        {
+                            
+                            break;
+                        }
+                        case 2:
+                            libary.logout();
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
             break;
         case 2:
             {
                 // system("cls");
+                int logout_flag = 0;
                 while (1)
                 {
                     string username;
@@ -88,13 +128,14 @@ int main(){
                     }
                 }
                 // system("cls");
-                while (1) {
+                while (logout_flag==0) {
                     cout << "=====================================================\n";
                     cout << "====================== "<< libary.memLogin->name <<" ====================\n";
 
                     cout << "1. Find book\n";
                     cout << "2. Return book\n";
                     cout << "3. View returned books\n";
+                    cout << "4. Logout\n";
                     cin >> chose;
                     switch (chose)
                     {
@@ -154,16 +195,29 @@ int main(){
                             cout << "========================= Return book =====================\n";
                             cout << "===================== " << libary.memLogin->name << " ==================\n";
                             libary.printBorrowingBook();
-                            cout << "Chose to return/n";
+                            cout << "Chose to return, enter -2 to exit\n";
                             int nav = -2;
-
-                            while(nav != -1){
-                                cin >> nav;
-                                
-                            }
+                            cin >> nav;
+                            if (nav == -2) break;
+                            libary.returnBook(nav);
+        
                         }
                         break;
                     }
+                    case 3:
+                    {
+                        cout << "========================= View returned books =====================\n";
+                        cout << "===================== " << libary.memLogin->name << " ==================\n";
+                        libary.history();
+                        cout<<"Enter any number to exit\n";
+                        int nav = 0;
+                        cin >> nav;
+                        break;
+                    }
+                    case 4:
+                        libary.logout();
+                        logout_flag = 1;
+                        break;
                     default:
                         break;
                     }

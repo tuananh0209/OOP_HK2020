@@ -14,6 +14,12 @@ Member::~Member(){
         cout << i << ". ";
         delete borrowing[i];
     }
+    len = this->history.size();
+    for (int i = 0; i < len; i++)
+    {
+        cout << i << ". ";
+        delete history[i];
+    }
 }
 
 void Member::printBookBorrowing(){
@@ -26,6 +32,7 @@ void Member::printBookBorrowing(){
 }
 
 void Member::returnBook(int i){
+    if (i < 0 || i >= this->borrowing.size()) return;
     BookBorrow *item = this->borrowing[i];
     time_t cur;
     struct tm *tmp;
@@ -34,6 +41,24 @@ void Member::returnBook(int i){
     int day = difTime/(60*60*24);
     item ->dateReturn = cur;
     if (day > 10){
-        
+        item->penalty = int(day - 10)*10000;
+        item ->isReturnLate = true;
+    }
+    item->isReturnLate = false;
+    item->is_return = true;
+    item->book->book_available +=1;
+    item->bookItem->borrowed = false;
+    this->numBookBorrow -= 1;
+    item->printBookBorrow();
+    this->history.push_back(item);
+    vector<BookBorrow *>::iterator rm = borrowing.begin() + i - 1;
+    borrowing.erase(rm);
+}
+
+void Member::viewHistory(){
+    int len = this->history.size();
+    for (int i = 0; i < len; i++){
+        cout << "=================\n";
+        this->history[i]->printBookBorrow();
     }
 }

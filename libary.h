@@ -17,7 +17,7 @@ class Libary {
     vector <Librarian*> librarian;
     vector <Member*> member;
     Member *memLogin;
-
+    Librarian *libraLogin;
     Libary();
 
     void addMember(Member *member);
@@ -31,7 +31,11 @@ class Libary {
     void addNotification(Book *item);
     void printBorrowingBook();
     void returnBook(int i);
+    void history();
+    void logout();
 
+    bool librarianLogin(string username);
+    vector<Book *> Libary::listBook();
 };
 
 #endif

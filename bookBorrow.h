@@ -14,9 +14,11 @@ class BookBorrow
         time_t dateReturn;
         bool isReturnLate;
         int dateLate;
+        int penalty;
 
         BookBorrow();
         BookBorrow(Book *book, BookItem * bookItem);
+        void printBookBorrow();
 };
 
 #endif

@@ -18,6 +18,7 @@ class Member: public Person {
     Member(int id,string username, string name, string phone, string address, string birthday);
     void printBookBorrowing();
     void returnBook(int i);
+    void viewHistory();
 };
 
 #endif

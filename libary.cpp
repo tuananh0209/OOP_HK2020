@@ -84,5 +84,48 @@ void Libary::printBorrowingBook(){
 }
 
 void Libary::returnBook(int i){
-    this->memLogin->
+    this->memLogin->returnBook(i);
+}
+
+void Libary::history(){
+    this->memLogin->viewHistory();
+}
+
+void Libary::logout(){
+    this->memLogin = nullptr;
+    this->libraLogin = nullptr;
+}
+
+bool Libary::librarianLogin(string username){
+    int len = this->librarian.size();
+    for (int i = 0; i < len; i++)
+    {
+        if (this->librarian[i]->username == username)
+        {
+            this->libraLogin = this->librarian[i];
+            return true;
+        }
+    }
+    return false;
+}
+
+vector<Book *> Libary::listBook()
+{
+    int len = this->bookShelf.size();
+    vector<Book *> result;
+    for (int i = 0; i < len; i++)
+    {
+        vector<Book *> t = this->bookShelf[i]->getBook();
+        if (t.size() > 0)
+        {
+            result.insert(result.end(), t.begin(), t.end());
+        }
+    }
+    len = result.size();
+    for (int i = 0; i < len; i++)
+    {
+        cout << i << ". ";
+        result[i]->printBook();
+    }
+    return result;
 }
