@@ -23,7 +23,9 @@ class Libary {
     void addLibrarian(Librarian *librarian);
     void addBookShelf(BookShelf *bookShelf);
     int getID(TypeID typeId);
-    bool login(string username);   
+    bool login(string username);
+
+    vector <Book*> findBook(string key);   
 };
 
 #endif

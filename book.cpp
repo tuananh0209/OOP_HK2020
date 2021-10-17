@@ -2,10 +2,11 @@
 
 Book::Book(){};
 
-Book::Book(int id, string name, string subject,
+Book::Book(int id, string name, string subject, string author,
            string publisher, string publiccationDate)
 {
     this->id = id;
+    this->author = author;
     this->name = name;
     this->subject = subject;
     this->publisher = publisher;

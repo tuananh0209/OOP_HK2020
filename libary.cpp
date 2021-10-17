@@ -33,3 +33,19 @@ bool Libary::login(string username){
     }
     return false;
 }
+
+vector<Book *> Libary::findBook(string key)
+{
+    int j = 1, len = this->bookShelf.size();
+    transform(key.begin(), key.end(), key.begin(), ::tolower);
+
+    vector<Book *> result;
+    for (int i = 0; i < len; i++)
+    {
+        vector<Book *> t = bookShelf[i]->search(key);
+        if (t.size() > 0){
+            result.insert(result.end(), t.begin(), t.end());
+        }
+    }
+    return result;
+}

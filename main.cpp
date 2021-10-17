@@ -23,8 +23,8 @@ string getString()
 int main(){
     srand(time(NULL));
 
-    Book book1(1, "doi gio hu", "", "Nha Nam", "1/10/2021");
-    Book book2(2, "Cay cam ngot cua toi", "", "Nha Nam", "2/10/2021");
+    Book book1(1, "doi gio hu", "","demo1", "Nha Nam", "1/10/2021");
+    Book book2(2, "Cay cam ngot cua toi", "","demo2", "Nha Nam", "2/10/2021");
 
     BookItem bookItem1(11);
     BookItem bookItem2(12);
@@ -103,6 +103,11 @@ int main(){
                         {
                             system("cls");
                             cout << "======================== Find books ======================\n";
+                            cout << "====================== " << libary.memLogin->name << " ====================\n";
+                            cout << "Enter key word:\n";
+                            string key;
+                            key = getString();
+                            
 
                         }
                         break;

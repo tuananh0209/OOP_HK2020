@@ -11,12 +11,13 @@ public:
     string name;
     string subject;
     string publisher;
+    string author;
     string publiccationDate;
     vector <BookItem *> bookItem;
     int book_available;
 
     Book();
-    Book(int id, string name, string subject, string publisher, string publiccationDate);
+    Book(int id, string name, string subject, string author, string publisher, string publiccationDate);
 
     void printBook();
     void addBookItem(BookItem * item);
