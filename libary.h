@@ -5,6 +5,7 @@
 #include "bookShelf.h"
 #include "librarian.h"
 #include "member.h"
+#include "bookBorrow.h"
 
 enum TypeID {
     M, B, L
@@ -25,7 +26,12 @@ class Libary {
     int getID(TypeID typeId);
     bool login(string username);
 
-    vector <Book*> findBook(string key);   
+    vector <Book*> findBook(string key);
+    int borrowBook(Book *item);
+    void addNotification(Book *item);
+    void printBorrowingBook();
+    void returnBook(int i);
+
 };
 
 #endif

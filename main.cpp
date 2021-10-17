@@ -5,7 +5,7 @@
 #include "person.cpp"
 #include "bookItem.cpp"
 #include "member.cpp"
-
+#include "bookBorrow.cpp"
 
 string getString()
 {
@@ -23,14 +23,14 @@ string getString()
 int main(){
     srand(time(NULL));
 
-    Book book1(1, "doi gio hu", "","demo1", "Nha Nam", "1/10/2021");
-    Book book2(2, "Cay cam ngot cua toi", "","demo2", "Nha Nam", "2/10/2021");
+    Book book1(1, "doi gio hu", "demo1","demo1", "Nha Nam", "1/10/2021");
+    Book book2(2, "Cay cam ngot cua toi", "demo2","demo2", "Nha Nam", "2/10/2021");
 
     BookItem bookItem1(11);
     BookItem bookItem2(12);
 
     book1.addBookItem(&bookItem1);
-    book1.addBookItem(&bookItem2);
+    book2.addBookItem(&bookItem2);
 
     BookShelf shelf1(1, "sach van hoc");
     BookShelf shelf2(2, "sach nuoc ngoai");
@@ -58,7 +58,7 @@ int main(){
     while (1)
     {
         int chose = -1;
-        system("cls");
+        // system("cls");
         cout <<"=====================================================\n";
         cout <<"Wellcome to libary, are you librarian or member:\n";
         cout << "1. Librarian\n";
@@ -72,7 +72,7 @@ int main(){
             break;
         case 2:
             {
-                system("cls");
+                // system("cls");
                 while (1)
                 {
                     string username;
@@ -87,31 +87,83 @@ int main(){
                         break;
                     }
                 }
-                system("cls");
+                // system("cls");
                 while (1) {
                     cout << "=====================================================\n";
                     cout << "====================== "<< libary.memLogin->name <<" ====================\n";
 
                     cout << "1. Find book\n";
-                    cout << "2. Borrow book\n";
-                    cout << "3. Return book\n";
-                    cout << "4. View borrowed books\n";
+                    cout << "2. Return book\n";
+                    cout << "3. View returned books\n";
                     cin >> chose;
                     switch (chose)
                     {
                     case 1:
                         {
-                            system("cls");
-                            cout << "======================== Find books ======================\n";
-                            cout << "====================== " << libary.memLogin->name << " ====================\n";
-                            cout << "Enter key word:\n";
-                            string key;
-                            key = getString();
-                            
+                            while(chose == 1){
+                                // system("cls");
+                                cout << "======================== Find books ======================\n";
+                                cout << "====================== " << libary.memLogin->name << " ====================\n";
+                                cout << "Enter key word:\n";
+                                string key;
+                                key = getString();
+                                vector <Book *> result = libary.findBook(key);
+                                cout << "Chose one for borrow, enter -1 to continue find, enter -2 to exit:\n";
 
+                                int nav = 0;
+
+                                while(nav != -1)
+                                {
+                                    cin >> nav;
+                                    if (nav == -1)
+                                    {
+                                        break;
+                                    }
+                                    else if (nav == -2)
+                                    {
+                                        chose = -1;
+                                        break;
+                                    }
+
+                                    if (nav < 0 | nav >= result.size())
+                                    {
+                                        continue;
+                                    }
+                                    else
+                                    {
+                                        int r = libary.borrowBook(result[nav]);
+                                        if (r == 2) {
+                                            chose = -1;
+                                            break;
+                                        } else if (r == 1){
+                                            int notifi = 1;
+                                            cin >> notifi;
+                                            if (notifi == 1){
+                                                libary.addNotification(result[nav]);
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
                         }
                         break;
-                    
+                    case 2:
+                    {
+                        while(chose==2){
+                            cout << "========================= Return book =====================\n";
+                            cout << "===================== " << libary.memLogin->name << " ==================\n";
+                            libary.printBorrowingBook();
+                            cout << "Chose to return/n";
+                            int nav = -2;
+
+                            while(nav != -1){
+                                cin >> nav;
+                                
+                            }
+                        }
+                        break;
+                    }
                     default:
                         break;
                     }
@@ -121,7 +173,7 @@ int main(){
             break;
         case 3:
         {
-            system("cls");
+            // system("cls");
             string name, phone, address, birthday, username;
             cout << "====================== Register ===============\n";
             cout << "Enter name\n";

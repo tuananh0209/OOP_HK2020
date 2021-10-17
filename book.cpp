@@ -23,3 +23,15 @@ void Book::addBookItem(BookItem* item){
     this->bookItem.push_back(item);
     this->book_available += 1;
 }
+
+BookItem * Book::findAvailable(){
+    int len = this->bookItem.size();
+    for (int i = 0; i < len; i++)
+    {
+        if (bookItem[i]->borrowed == false){
+            bookItem[i]->borrowed = true;
+            return bookItem[i];
+        }
+    }
+    return nullptr;
+}

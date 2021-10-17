@@ -12,7 +12,7 @@ void BookShelf::addBook(Book * item){
 
 vector<Book *> BookShelf::search(string key)
 {
-    int j = 1, len = this->book.size();
+    int len = this->book.size();
     transform(key.begin(), key.end(), key.begin(), ::tolower);
 
     vector<Book *> result;
@@ -33,26 +33,22 @@ vector<Book *> BookShelf::search(string key)
         if (bookName.find(key) != string::npos)
         {
             result.push_back(book[i]);
-            cout << j++ << ". ";
-            book[i]->printBook();
+
         }
         else if (bookSubject.find(key) != string::npos)
         {
             result.push_back(book[i]);
-            cout << j++ << ". ";
-            book[i]->printBook();
+           
         }
         else if (bookAuthor.find(key) != string::npos)
         {
             result.push_back(book[i]);
-            cout << j++ << ". ";
-            book[i]->printBook();
+            
         }
         else if (bookPublicDate.find(key) != string::npos)
         {
             result.push_back(book[i]);
-            cout << j++ << ". ";
-            book[i]->printBook();
+           
         }
         
     }

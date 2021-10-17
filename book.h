@@ -21,6 +21,7 @@ public:
 
     void printBook();
     void addBookItem(BookItem * item);
+    BookItem * findAvailable();
 };
 
 #endif

@@ -3,16 +3,21 @@
 
 #include "header.h"
 #include "person.h"
+#include "bookBorrow.h"
 
 class Member: public Person {
     public:
     int id;
-    vector <BookItem*> history;
-    vector <BookItem*> borrowing;
+    vector <BookBorrow*> history;
+    vector <BookBorrow*> borrowing;
+    vector <Book *> waitNotification;
 
+    int numBookBorrow;
     Member();
+    ~Member();
     Member(int id,string username, string name, string phone, string address, string birthday);
-
+    void printBookBorrowing();
+    void returnBook(int i);
 };
 
 #endif
