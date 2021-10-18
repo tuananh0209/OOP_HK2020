@@ -43,8 +43,7 @@ void Member::returnBook(int i){
     if (day > 10){
         item->penalty = int(day - 10)*10000;
         item ->isReturnLate = true;
-    }
-    item->isReturnLate = false;
+    } 
     item->is_return = true;
     item->book->book_available +=1;
     item->bookItem->borrowed = false;

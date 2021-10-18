@@ -25,18 +25,26 @@ int main(){
 
     Book book1(1, "doi gio hu", "demo1","demo1", "Nha Nam", "1/10/2021");
     Book book2(2, "Cay cam ngot cua toi", "demo2","demo2", "Nha Nam", "2/10/2021");
+    Book book3(3, "Nanh trang", "demo3", "demo3", "Nha Nam", "5/10/2021");
+    Book book4(4, "Quan hau den", "demo4", "demo4", "Nha Nam", "6/10/2021");
 
     BookItem bookItem1(11);
     BookItem bookItem2(12);
+    BookItem bookItem3(13);
+    BookItem bookItem4(14);
 
     book1.addBookItem(&bookItem1);
     book2.addBookItem(&bookItem2);
+    book3.addBookItem(&bookItem3);
+    book4.addBookItem(&bookItem4);
 
     BookShelf shelf1(1, "sach van hoc");
     BookShelf shelf2(2, "sach nuoc ngoai");
 
     shelf1.addBook(&book2);
     shelf2.addBook(&book1);
+    shelf2.addBook(&book3);
+    shelf2.addBook(&book4);
 
     Libary libary;
     libary.addBookShelf(&shelf1);
@@ -44,6 +52,15 @@ int main(){
 
     Member member1(1, "mem1", "member1", "123456789", "Bach Khoa cs1", "20/10/2000");
     Member member2(2, "mem2", "member2", "987654321", "Bach Khoa cs2", "20/10/2000");
+    
+    member2.waitNotification.push_back(&book3);
+    BookBorrow *bookBorrow1 = new BookBorrow(&book4, &bookItem4);
+    bookBorrow1->dateBorrow = 1633539600;
+    bookBorrow1->isReturnLate = true;
+    member2.borrowing.push_back(bookBorrow1);
+    book4.book_available -= 1;
+    member2.numBookBorrow +=1;
+    bookItem4.borrowed = true;
 
     Librarian librarian1(1,"lib1", "librarian1", "12345667", "Bach Khoa cs1", "20/3/2013");
     Librarian librarian2(2,"lib2", "librarian2", "12345667", "Bach Khoa cs2", "20/3/2013");
@@ -150,7 +167,7 @@ int main(){
                 while (logout_flag==0) {
                     cout << "=====================================================\n";
                     cout << "====================== "<< libary.memLogin->name <<" ====================\n";
-                    
+                    libary.checkNotification();
                     cout << "1. Find book\n";
                     cout << "2. Return book\n";
                     cout << "3. View returned books\n";

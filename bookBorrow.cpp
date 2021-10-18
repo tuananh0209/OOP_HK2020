@@ -12,6 +12,7 @@ BookBorrow::BookBorrow(Book *book, BookItem *bookItem){
 
 void BookBorrow::printBookBorrow(){
     tm *ltm = localtime(&this->dateBorrow);
+    cout <<"sss" << this->isReturnLate;
     string late = this->isReturnLate ? "true" : "false";
     cout << "Name: "<< this->book->name << endl;
     cout << "Date borrow: " << ltm->tm_mday <<"-"<< 1 + ltm->tm_mon << "-" << 1900 + ltm->tm_year << endl;
