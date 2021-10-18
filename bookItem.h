@@ -10,9 +10,6 @@ class BookItem
 public:
     int code;
     bool borrowed;
-    string loanPeriod;
-    string dueDay;
-    bool isOverdue;
 
     BookItem();
     BookItem(int code);
