@@ -163,4 +163,17 @@ void Libary::checkNotification(){
             this->memLogin->waitNotification.erase(rm);
         } 
     }
+    vector <BookBorrow *> bookBorrow = this->memLogin->borrowing;
+    len = bookBorrow.size();
+    time_t cur;
+    time(&cur);
+    for (int i = 0; i < len; i++){
+       
+        int difTime = int(difftime(cur, bookBorrow[i]->dateBorrow));
+        int day = difTime / (60 * 60 * 24);
+        if (day > 10)
+        {
+            cout << "Book " << bookBorrow[i]->book->name << " is due date for refund!\n";
+        }
+    }
 }
