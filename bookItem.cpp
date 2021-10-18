@@ -9,6 +9,7 @@ BookItem::BookItem(int code)
 
 void BookItem::printBookItem(){
     string available = this->borrowed ? "False" : "True";
+    cout <<"=======================\n";
     cout << "Code: " << this->code << endl;
     cout << "Is avalable: "<< available << endl;
 }

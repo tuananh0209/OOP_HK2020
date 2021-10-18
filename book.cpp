@@ -16,7 +16,7 @@ Book::Book(int id, string name, string subject, string author,
 
 void Book::printBook()
 {
-    cout << "Name: " << this->name << " publisher: " << this->publisher << endl;
+    cout << "Name: " << this->name << " Publisher: " << this->publisher << endl;
 }
 
 void Book::addBookItem(BookItem* item){
