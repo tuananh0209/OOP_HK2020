@@ -5,6 +5,7 @@ BookItem::BookItem(){};
 BookItem::BookItem(int code)
 {
     this->code = code;
+    this->borrowed = false;
 }
 
 void BookItem::printBookItem(){

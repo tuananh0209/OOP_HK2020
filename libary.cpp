@@ -14,14 +14,6 @@ void Libary::addMember(Member *member){
     this->member.push_back(member);
 }
 
-// int Libary::getID(TypeID typeId){
-//     if (typeId == M){
-//         return this->member.size() + 1;
-//     } else if (typeId == L){
-//         return this->librarian.size() + 1;
-//     }
-//     return rand() 1;
-// }
 
 bool Libary::login(string username){
     int len = this->member.size();

@@ -7,9 +7,6 @@
 #include "member.h"
 #include "bookBorrow.h"
 
-enum TypeID {
-    M, B, L
-};
 
 class Libary {
     public:
@@ -23,7 +20,6 @@ class Libary {
     void addMember(Member *member);
     void addLibrarian(Librarian *librarian);
     void addBookShelf(BookShelf *bookShelf);
-    int getID(TypeID typeId);
     bool login(string username);
 
     vector <Book*> findBook(string key);
