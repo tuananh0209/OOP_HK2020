@@ -35,7 +35,10 @@ class Libary {
     void logout();
 
     bool librarianLogin(string username);
-    vector<Book *> Libary::listBook();
+    vector<Book *> listBook();
+    void bookDetail(Book * item);
+    string getMemberNameBorrowing(int code, int id);
+    void checkNotification();
 };
 
 #endif

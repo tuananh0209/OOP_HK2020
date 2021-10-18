@@ -91,17 +91,36 @@ int main(){
                     cout << "=====================================================\n";
                     cout << "====================== " << libary.libraLogin->name << " ====================\n";
 
-                    cout << "1. list book\n";
-                    cout << "2. logout\n";
+                    cout << "1. List book\n";
+                    cout << "2. Logout\n";
                     cin >> chose;
                     switch (chose){
                         case 1:
                         {
+                            int nav = -1;
+                            while (1){
+                                cout << "========================= List book ====================\n";
+                                cout << "====================== " << libary.libraLogin->name << " ====================\n";
+                                vector<Book *> list_book = libary.listBook();
+                                cout << "Chose one to view book item, enter -2 to exit\n";
+                                cin >> nav;
+                                if (nav == -2 ){
+                                    break; 
+                                } else if (nav >= 0 && nav < list_book.size() ){
+                                    libary.bookDetail(list_book[nav]);
+                                    cout <<"Enter any number to exit\n";
+                                    int t = 0;
+                                    cin >> t;
+                                }
+                                
+                                
+                            }
                             
                             break;
                         }
                         case 2:
                             libary.logout();
+                            logout_flag = 1;
                             break;
                         default:
                             break;
@@ -131,7 +150,7 @@ int main(){
                 while (logout_flag==0) {
                     cout << "=====================================================\n";
                     cout << "====================== "<< libary.memLogin->name <<" ====================\n";
-
+                    
                     cout << "1. Find book\n";
                     cout << "2. Return book\n";
                     cout << "3. View returned books\n";

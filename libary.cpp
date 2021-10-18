@@ -129,3 +129,46 @@ vector<Book *> Libary::listBook()
     }
     return result;
 }
+
+void Libary::bookDetail(Book *item){
+    item -> printBook();
+    int len = item->bookItem.size();
+    for (int i= 0; i < len; i++){
+        item->bookItem[i]->printBookItem();
+        string memberName =  this->Libary::getMemberNameBorrowing(item->bookItem[i]->code, item->id);
+        cout << "Member borrowing: " << memberName << endl;
+    }
+}
+
+string Libary::getMemberNameBorrowing(int code, int id)
+{ 
+    string result = "";
+    int len = this->member.size();
+    bool found = false;
+    for (int i = 0; i < len; i++){
+        if (found == true) break;
+        int len2 =  this->member[i]->borrowing.size();
+        for (int j = 0; j < len2; j++){
+            BookBorrow *t = this->member[i]->borrowing[j];
+            if(t->book->id == id && t->bookItem->code == code){
+                result += this->member[i]->name;
+                found = true;
+                break;
+            }
+        }
+    }
+    return result;
+}
+
+void Libary::checkNotification(){
+    vector<Book *> waitNoti = this->memLogin->waitNotification;
+    int len = waitNoti.size();
+    for(int i = 0; i < len; i++){
+        if (waitNoti[i]->book_available > 0)
+        {
+            cout <<"Book " << waitNoti[i]->name << " is available!\n";
+            vector<Book *>::iterator rm = this->memLogin->waitNotification.begin() + i - 1;
+            this->memLogin->waitNotification.erase(rm);
+        } 
+    }
+}

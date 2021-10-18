@@ -16,6 +16,8 @@ public:
 
     BookItem();
     BookItem(int code);
+    
+    void printBookItem();
 };
 
 #endif
